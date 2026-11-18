@@ -2,14 +2,24 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Tabuada</title></head>
-<body>  
-    <h1>Tabuada do {{ n }}</h1>  
-    <ul>  
-        {% for i in range(1, 11) %}    
-    <li>{{ n }} x {{ i }} = {{ n * i }}</li>  
-    {% endfor %}  
-    </ul>  
-    <a href="/">Voltar ao início/a>
+    <title>Tabuada</title>
+</head>
+<body>
+    <h1>Tabuada do {{ n }}</h1>
+    <ul>
+    {% for i in range(1, 11) %}
+        <li>{{ n }} x {{ i }} = {{ n * i }}</li>
+    {% endfor %}
+    </ul>
+    <p>
+      {% if n > 1 %}
+        <a href="/tabuada/{{ n - 1 }}">‹ Anterior</a>
+      {% endif %}
+      {% if n < 10 %}
+        <a href="/tabuada/{{ n + 1 }}">Próxima ›</a>
+      {% endif %}
+    </p>
+    <a href="/tabuadas">Ver todas as tabuadas</a>
+    <a href="/">Voltar ao início</a>
 </body>
 </html>
