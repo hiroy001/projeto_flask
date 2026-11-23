@@ -1,30 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap");
+
 :root {
-    /* paleta vampírica */
-    --bg: #0b0608;
-    --surface: #160a0e;
-    --border: #2a1219;
-    --wine: #4a0d1a;
-    --blood: #8b0a1a;
-    --blood-bright: #c1121f;
-    --gold: #b8975a;
-    --text: #e8dcd3;
-    --text-muted: #9a8a86;
+    /* paleta: vinho + sangue + preto + branco/prata */
+    --black: #0a0507;
+    --wine-deep: #2e0812;
+    --wine-dark: #3f0b19;
+    --wine: #5e0f22;
+    --blood: #b0122a;
+    --blood-bright: #d41a35;
+    --silver: #b9b4b6;
+    --ivory: #f1e9e6;
 
-    /* mesmos nomes de variáveis do CSS original */
-    --background-1: var(--bg);
+    /* mesmos nomes de variáveis do CSS da equipe */
+    --background-1: var(--black);
 
-    --background-2: var(--surface);
-    --foreground-2: var(--text);
-    --border-2: var(--gold);
-    --shadow-2: rgba(0, 0, 0, 0.6);
-    --shadow-2-1: rgba(139, 10, 26, 0.35);
+    --background-2: var(--wine);
+    --foreground-2: var(--ivory);
+    --border-2: var(--silver);
+    --shadow-2: rgba(0, 0, 0, 0.65);
+    --shadow-2-1: rgba(176, 18, 42, 0.35);
 
-    --element-odd: var(--surface);
-    --element-even: #1d0e13;
-    --element-fg: var(--gold);
+    --element-odd: var(--wine-dark);
+    --element-even: var(--wine-deep);
+    --element-fg: var(--ivory);
 
     --element-hover-bg: var(--blood);
-    --element-hover-fg: var(--text);
+    --element-hover-fg: var(--ivory);
 
     --corner: 10px;
 }
@@ -37,14 +38,46 @@ body {
     justify-content: center;
     align-items: center;
 
-    background-color: var(--background-1);
+    background-color: #14060a;
     background-image: url("../icons/Background.jpg");
     background-repeat: repeat;
     background-size: 64px 64px;
     background-blend-mode: soft-light;
 
-    font-family: "Jetbrains Mono", Arial, Helvetica, sans-serif;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
     font-weight: 250;
+}
+
+/* ornamentos nos cantos (ficam atrás do conteúdo, não bloqueiam cliques)
+   para trocar a cor: use os arquivos -silver.png no lugar de -blood.png */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.6;
+}
+
+body::before {
+    top: 0;
+    right: 0;
+    width: clamp(160px, 28vw, 420px);
+    aspect-ratio: 402 / 475;
+    background-image: url("../icons/canto-sup-dir-silver.png");
+    background-position: top right;
+}
+
+body::after {
+    bottom: 0;
+    left: 0;
+    width: clamp(150px, 26vw, 380px);
+    aspect-ratio: 360 / 430;
+    background-image: url("../icons/canto-inf-esq-silver.png");
+    background-position: bottom left;
 }
 
 .center {
@@ -73,21 +106,26 @@ body {
     background-color: var(--background-2);
     color: var(--foreground-2);
     border: 1px solid var(--border-2);
-    box-shadow: 0 0 5px 5px var(--shadow-2);
+    box-shadow: 0 0 14px 2px var(--shadow-2-1);
     border-radius: var(--corner);
 }
 
+/* cabeçalho preto como a lapela do colete */
 .card h2 {
     margin: 0;
 
     padding-left: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 
-    background-color: var(--border-2);
-    color: var(--background-2);
+    background-color: var(--black);
+    color: var(--ivory);
+    border-bottom: 2px solid var(--blood);
     border-top-left-radius: var(--corner);
     border-top-right-radius: var(--corner);
+
+    font-family: "Cinzel", Georgia, serif;
+    letter-spacing: 0.04em;
 
     box-shadow: 0 5px 5px var(--shadow-2);
 
@@ -99,6 +137,10 @@ body {
     padding-right: 15px;
 
     user-select: none;
+}
+
+.card code {
+    color: var(--silver);
 }
 
 .card .container {
@@ -159,7 +201,7 @@ body {
 }
 
 .card a {
-    color: var(--gold);
+    color: var(--silver);
 
     margin: 8px;
     padding: 7px;
@@ -174,8 +216,36 @@ body {
 }
 
 .card a:hover {
-    color: var(--background-2);
-    background-color: var(--gold);
+    color: var(--ivory);
+    background-color: var(--blood);
 
     transition: 0.1s ease-in-out;
+}
+
+.card table {
+    width: calc(100% - 30px);
+    margin: 0 15px;
+    border-collapse: collapse;
+}
+
+.card th {
+    background-color: var(--black);
+    color: var(--ivory);
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--blood);
+}
+
+.card td {
+    padding: 8px 12px;
+}
+
+.card tbody tr:nth-child(odd) {
+    background-color: var(--element-odd);
+}
+.card tbody tr:nth-child(even) {
+    background-color: var(--element-even);
+}
+.card tbody tr:hover {
+    background-color: var(--blood);
 }
