@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Alunos</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style/index.css') }}"
+        />
+    </head>
+    <body>
+        <div class="center">
+            <div class="card">
+                <h2>Alunos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Cidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for aluno in alunos %}
+                        <tr>
+                            <td>{{ aluno.id }}</td>
+                            <td>{{ aluno.nome }}</td>
+                            <td>{{ aluno.telefone }}</td>
+                            <td>{{ aluno.cidade }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4">Nenhum aluno cadastrado.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p>Total: {{ alunos|length }} aluno(s)</p>
+                <a href="/">Voltar ao início</a>
+            </div>
+        </div>
+    </body>
+</html>
