@@ -1,13 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head><meta charset="UTF-8"><title>Idade</title></head>
-<body>
-    <h1>Você tem {{ idade }} anos</h1>
-    {% if idade > 18 %}
-    <p>Você é maior de idade.</p>
-    {% else %}
-    <p>Você é menor de idade.</p>
-    {% endif %}
-    <a href="/">Voltar inicio</a>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Idade</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style/index.css') }}"
+        />
+    </head>
+    <body>
+        <div class="center">
+            <div class="card">
+                <h2>Você tem {{ idade }} anos</h2>
+                {% if idade > 18 %}
+                <p>Você é maior de idade.</p>
+                {% else %}
+                <p>Você é menor de idade.</p>
+                {% endif %}
+                <a href="/">Voltar ao início</a>
+            </div>
+        </div>
+    </body>
 </html>

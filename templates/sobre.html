@@ -1,9 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head><meta charset="UTF-8"><title>Sobre</title></head>
-<body>
-    <h1>Sobre mim</h1>
-    <p>Sou aluno de informatica</p>
-    <a href="/">Voltar inicio</a>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Sobre</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style/index.css') }}"
+        />
+    </head>
+    <body>
+        <div class="center">
+            <div class="card">
+                <h2>Sobre mim</h2>
+                <p>Sou aluno de informatica</p>
+                <a href="/">Voltar inicio</a>
+            </div>
+        </div>
+    </body>
 </html>

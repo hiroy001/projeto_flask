@@ -1,14 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-    <head><meta charset="UTF-8"><title>Disciplinas</title></head>
-<body>
-    <h1>Minhas disciplinas</h1>
-    <ul>  
-        {% for d in disciplinas %}    
-    <li>{{ d }}</li>  
-        {% endfor %}  
-    </ul>  
-    <a href="/">Voltar ao início/a>
-        
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Disciplinas</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style/index.css') }}"
+        />
+    </head>
+    <body>
+        <div class="center">
+            <div class="card">
+                <h2>Minhas disciplinas</h2>
+                <ul>
+                    {% for d in disciplinas %}
+                    <li>{{ d }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="/">Voltar ao início</a>
+            </div>
+        </div>
+    </body>
 </html>

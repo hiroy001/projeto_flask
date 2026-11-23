@@ -1,13 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head><meta charset="UTF-8"><title>Tabuadas</title></head>
-<body>
-  <h1>Escolha uma tabuada</h1>
-  <ul>
-  {% for i in range(1, 11) %}
-    <li><a href="/tabuada/{{ i }}">Tabuada do {{ i }}</a></li>
-  {% endfor %}
-  </ul>
-  <a href="/">Voltar ao início</a>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tabuadas</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style/index.css') }}"
+        />
+    </head>
+    <body>
+        <div class="center">
+            <div class="card">
+                <h2>Escolha uma tabuada</h2>
+                <ul class="container">
+                    {% for i in range(1, 11) %}
+                    <a href="/tabuada/{{ i }}">Tabuada do {{ i }}</a>
+                    {% endfor %}
+                </ul>
+                <a href="/">Voltar ao início</a>
+            </div>
+        </div>
+    </body>
 </html>
