@@ -1,251 +1,298 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap");
-
 :root {
-    /* paleta: vinho + sangue + preto + branco/prata */
-    --black: #0a0507;
-    --wine-deep: #2e0812;
-    --wine-dark: #3f0b19;
-    --wine: #5e0f22;
-    --blood: #b0122a;
-    --blood-bright: #d41a35;
-    --silver: #b9b4b6;
-    --ivory: #f1e9e6;
+    /* background */
+    --background-0: #191a21;
 
-    /* mesmos nomes de variáveis do CSS da equipe */
-    --background-1: var(--black);
+    /* text */
+    --text-font: "DejaVu Sans", Sans Serif, Arial;
+    --text-size: 15px;
+    --text-weight: 400;
+    --text-color: #ffff;
 
-    --background-2: var(--wine);
-    --foreground-2: var(--ivory);
-    --border-2: var(--silver);
-    --shadow-2: rgba(0, 0, 0, 0.65);
-    --shadow-2-1: rgba(176, 18, 42, 0.35);
+    /* transition */
+    --transition: 0.1s ease-out;
 
-    --element-odd: var(--wine-dark);
-    --element-even: var(--wine-deep);
-    --element-fg: var(--ivory);
+    /* card */
+    --card-background: #44475a;
+    --card-foreground: #f8f8f2;
+    --card-border: 1px solid #575b73;
+    --card-shadow: 0 0 10px #191a21;
+    --card-border-radius: 10px;
 
-    --element-hover-bg: var(--blood);
-    --element-hover-fg: var(--ivory);
+    --card-title-background: #575b73;
+    --card-title-foreground: #bd93f9;
+    --card-title-shadow: #bd93f9;
 
-    --corner: 10px;
+    /* containers */
+    --container-background: #282a36;
+    --container-foreground: #f8f8f2;
+    --container-border: #44475a;
+    --container-border-radius: 10px;
+    --container-item-padding: 5px;
+
+    --container-item-border-radius: 5px;
+
+    --container-item-background-0: #37394a;
+    --container-item-foreground-0: #f8f8f2;
+
+    --container-item-background-1: #5c6078;
+    --container-item-foreground-1: #f8f8f2;
+
+    --container-item-hover-background-0: #bd93f9;
+    --container-item-hover-foreground-0: #282a36;
+
+    /* links */
+    --link-background: #575b73;
+    --link-foreground: #8be9fd;
+    --link-border: 1px solid #575b73;
+    --link-border-radius: 10px;
+
+    --link-hover-background: #8be9fd;
+    --link-hover-foreground: #575b73;
+
+    /* tables */
+    --table-background: #282a36;
+    --table-foreground: #f8f8f2;
+    --table-border: 1px solid #575b73;
+    --table-border-radius: 10px;
+    --table-border-spacing: 0px;
+
+    --table-header-background: #575b73;
+    --table-header-foreground: #bd93f9;
+    --table-header-border: 1px solid #44475a;
+    --table-header-padding: 10px;
+
+    --table-row-border: 1px solid #44475a;
+    --table-row-padding: 10px;
+
+    --table-row-background-0: #37394a;
+    --table-row-foreground-0: #f8f8f2;
+
+    --table-row-background-1: #5c6078;
+    --table-row-foreground-1: #f8f8f2;
+
+    --table-row-hover-background: #bd93f9;
+    --table-row-hover-foreground: #282a36;
+
+    /* table alignment */
+    --table-text-align: left;
+    --table-header-text-align: left;
 }
 
+html,
 body {
-    margin: 0px;
-    padding: 0px;
+    background-color: var(--background-0);
+    backdrop-filter: blur(20px);
 
     display: flex;
     justify-content: center;
-    align-items: center;
 
-    background-color: #14060a;
-    background-image: url("../icons/Background.jpg");
-    background-repeat: repeat;
-    background-size: 64px 64px;
-    background-blend-mode: soft-light;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 18px;
-    font-weight: 250;
+    margin: 0;
+    padding-top: 15px;
+
+    font-family: var(--text-font);
+    font-weight: var(--text-weight);
+    font-size: var(--text-size);
+    color: var(--text-color);
 }
 
-/* ornamentos nos cantos (ficam atrás do conteúdo, não bloqueiam cliques)
-   para trocar a cor: use os arquivos -silver.png no lugar de -blood.png */
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    z-index: -1;
-    pointer-events: none;
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.6;
-}
-
-body::before {
-    top: 0;
-    right: 0;
-    width: clamp(160px, 28vw, 420px);
-    aspect-ratio: 402 / 475;
-    background-image: url("../icons/canto-sup-dir-silver.png");
-    background-position: top right;
-}
-
-body::after {
-    bottom: 0;
-    left: 0;
-    width: clamp(150px, 26vw, 380px);
-    aspect-ratio: 360 / 430;
-    background-image: url("../icons/canto-inf-esq-silver.png");
-    background-position: bottom left;
-}
-
-.center {
-    width: 35%;
-    height: auto;
-
-    padding-top: 25px;
-    padding-bottom: 25px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    background: transparent;
-}
-
+/* card */
 .card {
-    width: 100%;
-    height: auto;
+    color: var(--card-foreground);
+    border: var(--card-border);
+    box-shadow: var(--card-shadow);
+    border-radius: var(--card-border-radius);
+    background-color: var(--card-background);
 
-    padding-top: 0;
-    padding-bottom: 15px;
-    margin-top: 15px;
-
-    background-color: var(--background-2);
-    color: var(--foreground-2);
-    border: 1px solid var(--border-2);
-    box-shadow: 0 0 14px 2px var(--shadow-2-1);
-    border-radius: var(--corner);
+    margin-bottom: 10px;
+    padding: 0px 0px;
+    padding-bottom: 5px;
 }
 
-/* cabeçalho preto como a lapela do colete */
-.card h2 {
+.card h1 {
+    background-color: var(--card-title-background);
+    color: var(--card-title-foreground);
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
+
     margin: 0;
 
-    padding-left: 15px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-
-    background-color: var(--black);
-    color: var(--ivory);
-    border-bottom: 2px solid var(--blood);
-    border-top-left-radius: var(--corner);
-    border-top-right-radius: var(--corner);
-
-    font-family: "Cinzel", Georgia, serif;
-    letter-spacing: 0.04em;
-
-    box-shadow: 0 5px 5px var(--shadow-2);
-
-    user-select: none;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
 }
 
 .card p {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 
-    user-select: none;
+    font-weight: 390;
 }
 
-.card code {
-    color: var(--silver);
-}
-
-.card .container {
-    padding: 0;
-    margin-top: 20px;
-
+/* container */
+.container {
     display: flex;
     flex-direction: column;
 }
 
-.card .container a {
-    flex: 1;
+.container > * {
+    border-radius: var(--container-item-border-radius);
+    margin-top: var(--container-item-padding);
+    padding: 5px;
 
-    color: var(--element-fg);
     text-decoration: none;
-    font-weight: normal;
-    margin: 0;
-    padding: 15px;
-    border-radius: 5px;
-
-    transition: 0.1s ease-out;
-}
-
-.card .container li {
-    margin: 0;
+    user-select: none;
+    font-weight: medium;
     list-style: none;
-    user-select: none;
 }
 
-.card .container :nth-of-type(odd) {
-    background-color: var(--element-odd);
+.container :nth-child(odd) {
+    background-color: var(--container-item-background-0);
+    color: var(--container-item-foreground-0);
 
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 15px;
-    padding-right: 15px;
+    transition: var(--transition);
 }
 
-.card .container :nth-of-type(even) {
-    background-color: var(--element-even);
+.container :nth-child(even) {
+    background-color: var(--container-item-background-1);
+    color: var(--container-item-foreground-1);
 
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 15px;
-    padding-right: 15px;
+    transition: var(--transition);
 }
 
-.card .container a:hover {
-    background-color: var(--element-hover-bg);
-    color: var(--element-hover-fg);
+.container > *:hover {
+    background-color: var(--container-item-hover-background-0);
+    color: var(--container-item-hover-foreground-0);
 
-    transition: 0.1s ease-in-out;
+    transition: var(--transition);
 }
 
-.card li {
-    margin-top: 8px;
-    margin-bottom: 8px;
+.middle-container {
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
-.card a {
-    color: var(--silver);
+/* list */
+.list {
+    padding: 0;
+    margin: 5px;
+    margin-left: 20px;
+}
 
-    margin: 8px;
-    padding: 7px;
+.list > * {
+    font-size: 17px;
+    margin-top: 5px;
+}
 
-    user-select: none;
+/* link */
+.link {
+    display: inline-block;
+
+    background-color: var(--link-background);
+    color: var(--link-foreground);
+    border: var(--link-border);
+    border-radius: var(--link-border-radius);
+
     text-decoration: none;
+    user-select: none;
+    padding: 5px;
     font-weight: bold;
 
-    border-radius: var(--corner);
+    margin-top: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
 
-    transition: 0.1s ease-out;
+    transition: var(--transition);
 }
 
-.card a:hover {
-    color: var(--ivory);
-    background-color: var(--blood);
+.link:hover {
+    background-color: var(--link-hover-background);
+    color: var(--link-hover-foreground);
 
-    transition: 0.1s ease-in-out;
-}
-
-.card table {
-    width: calc(100% - 30px);
-    margin: 0 15px;
-    border-collapse: collapse;
+    transition: var(--transition);
 }
 
-.card th {
-    background-color: var(--black);
-    color: var(--ivory);
-    text-align: left;
-    padding: 8px 12px;
-    border-bottom: 2px solid var(--blood);
+.container .link {
+    color: var(--link-foreground);
+
+    margin: 0;
+    margin-top: var(--container-item-padding);
 }
 
-.card td {
-    padding: 8px 12px;
+.container .link:hover {
+    background-color: var(--link-hover-background);
+    color: var(--link-hover-foreground);
+
+    transition: var(--transition);
 }
 
-.card tbody tr:nth-child(odd) {
-    background-color: var(--element-odd);
+/* table */
+.table {
+    background-color: var(--table-background);
+    color: var(--table-foreground);
+
+    border: var(--table-border);
+    border-radius: var(--table-border-radius);
+    border-spacing: var(--table-border-spacing);
+    border-collapse: separate;
+
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+    overflow: hidden;
+    text-align: var(--table-text-align);
 }
-.card tbody tr:nth-child(even) {
-    background-color: var(--element-even);
+
+/* header */
+.table thead {
+    background-color: var(--table-header-background);
+    color: var(--table-header-foreground);
 }
-.card tbody tr:hover {
-    background-color: var(--blood);
+
+.table th {
+    background-color: var(--table-header-background);
+    color: var(--table-header-foreground);
+
+    border: var(--table-header-border);
+    padding: var(--table-header-padding);
+
+    text-align: var(--table-header-text-align);
+}
+
+/* rows */
+.table tbody tr:nth-child(odd) {
+    background-color: var(--table-row-background-0);
+    color: var(--table-row-foreground-0);
+
+    transition: var(--transition);
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: var(--table-row-background-1);
+    color: var(--table-row-foreground-1);
+
+    transition: var(--transition);
+}
+
+/* cells */
+.table td {
+    border: var(--table-row-border);
+    padding: var(--table-row-padding);
+}
+
+/* hover */
+.table tbody tr:hover {
+    background-color: var(--table-row-hover-background);
+    color: var(--table-row-hover-foreground);
 }

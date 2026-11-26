@@ -11,13 +11,16 @@
     <body>
         <div class="center">
             <div class="card">
-                <h2>Escolha uma tabuada</h2>
-                <ul class="container">
+                <h1>Escolha uma tabuada</h1>
+                <div class="container">
                     {% for i in range(1, 11) %}
-                    <a href="/tabuada/{{ i }}">Tabuada do {{ i }}</a>
+                    <a href="/tabuada/{{ i }}" class="link"
+                        >Tabuada do {{ i }}</a
+                    >
                     {% endfor %}
-                </ul>
-                <a href="/">Voltar ao início</a>
+                </div>
+                <br />
+                <a href="/" class="link">Voltar ao início</a>
             </div>
         </div>
     </body>

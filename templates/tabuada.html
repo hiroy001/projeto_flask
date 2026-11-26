@@ -11,21 +11,21 @@
     <body>
         <div class="center">
             <div class="card">
-                <h2>Tabuada do {{ n }}</h2>
-                <ul class="container">
+                <h1>Tabuada do {{ n }}</h1>
+                <div class="container">
                     {% for i in range(1, 11) %}
                     <li>{{ n }} x {{ i }} = {{ n * i }}</li>
                     {% endfor %}
-                </ul>
-                <p>
+                </div>
+                <div class="middle-container">
                     {% if n > 1 %}
-                    <a href="/tabuada/{{ n - 1 }}">‹ Anterior</a>
+                    <a href="/tabuada/{{ n - 1 }}" class="link">‹ Anterior</a>
                     {% endif %} {% if n < 10 %}
-                    <a href="/tabuada/{{ n + 1 }}">Próxima ›</a>
+                    <a href="/tabuada/{{ n + 1 }}" class="link">Próxima ›</a>
                     {% endif %}
-                </p>
-                <a href="/tabuadas">Ver todas as tabuadas</a>
-                <a href="/">Voltar ao início</a>
+                </div>
+                <a href="/tabuadas" class="link">Ver todas as tabuadas</a>
+                <a href="/" class="link">Voltar ao início</a>
             </div>
         </div>
     </body>
